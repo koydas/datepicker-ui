@@ -31,6 +31,8 @@ main {
 #calendar-wrapper .header {
     margin-bottom: .5em;
     display: flex;
+    height: 10vw;
+    font-size: 3vw;
 }
 
 #calendar-wrapper .header > i:first-of-type {
