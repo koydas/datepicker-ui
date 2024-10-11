@@ -1,168 +1,112 @@
 <html>
-    <head>
-        <script src="https://kit.fontawesome.com/b872c0f833.js" crossorigin="anonymous"></script>
-        <style>
-            #input-wrapper {
-                margin: .25em 1em;
-                padding: .5em .75em;
-                width: 200px;
-                border: 1px solid black;
-            }
 
-            #input-wrapper input {
-                border: 0;
-            }
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/b872c0f833.js" crossorigin="anonymous"></script>
 
-            #input-wrapper .icon {
-                float: right;
-            }
-            #calendar-wrapper {
-                margin: 0 1em;
-                padding: .5em .75em;
-                position: relative;
-                width: 200px;
-                border: 1px solid black;
-            }
-            
-            #calendar-wrapper .header {
-                margin-bottom: .5em;
-            }
-
-            #calendar-wrapper .header > i:first-of-type {
-                position: absolute;
-                left: 1em;
-            }
-
-            #calendar-wrapper .header .month {
-                position: relative;
-                width: 100%;
-                display: inline-block;
-                text-align: center;
-            }
-
-            #calendar-wrapper .header > i:last-of-type {
-                position: absolute;
-                right: 1em;
-            }
-
-            #calendar-wrapper .body .row {
-                height: 1em;
-                position: relative;
-                margin-bottom: .5em;
-            }
-            
-            #calendar-wrapper .body .calendar-header {
-                border-bottom: 2px solid black;
-                margin-bottom: .75em;
-            }
-
-            #calendar-wrapper .body span {
-                position: absolute;
-                text-align: center;
-                display: inline-block;
-            }
-
-            #calendar-wrapper .body span.one {
-                left: 0;
-            }
-
-            #calendar-wrapper .body span.two {
-                left: 2em;
-            }
-            #calendar-wrapper .body span.three {
-                left: 4em;
-            }
-
-            #calendar-wrapper .body span.four {
-                left: 5.5em;
-            }
-            #calendar-wrapper .body span.five {
-                left: 7.5em;
-            }
-
-            #calendar-wrapper .body span.six {
-                left: 9.5em;
-            }
-            #calendar-wrapper .body span.seven {
-                left: 11.5em;
-            }
-
-        </style>
-    </head>
-    <body>
-        <div id="input-wrapper">
-            <input placeholder="dd/mm/yyyy"/>
-            <span class="icon">
-                <i class="fa-solid fa-calendar-days"></i>
-            </span>
-        </div>
-        <div id="calendar-wrapper">
-            <div class="header">
-                <i class="fa-solid fa-caret-left"></i>
-                <span class="month">December 2022</span>
-                <i class="fa-solid fa-caret-right"></i>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    
+    <script src="script.js"></script>
+</head>
+    <body onload="init()">
+        <main>
+            <div id="input-wrapper">
+                <input placeholder="dd/mm/yyyy" />
+                <span class="icon">
+                    <i class="fa-solid fa-calendar-days"></i>
+                </span>
             </div>
-            <div class="body">
-                <div class="calendar-header">
-                    <div class="row">
-                        <span class="one">S</span>
-                        <span class="two">M</span>
-                        <span class="three">T</span>
-                        <span class="four">W</span>
-                        <span class="five">T</span>
-                        <span class="six">F</span>
-                        <span class="seven">S</span>
+            <div id="calendar-wrapper">
+                <div class="header">
+                    <div id="prev-month" onclick="prevMonth()">
+                        <i class="fa-solid fa-caret-left"></i>
                     </div>
-                </div>
 
-                <div class="calendar-body">
-                    <div class="row">
-                        <span class="one"></span>
-                        <span class="two"></span>
-                        <span class="three"></span>
-                        <span class="four"></span>
-                        <span class="five">1</span>
-                        <span class="six">2</span>
-                        <span class="seven">3</span>
+                    <span id="current-month" class="month"></span>
+                    
+                    <div id="next-month" onclick="nextMonth(this)">
+                        <i class="fa-solid fa-caret-right"></i>
                     </div>
-                    <div class="row">
-                        <span class="one">4</span>
-                        <span class="two">5</span>
-                        <span class="three">6</span>
-                        <span class="four">7</span>
-                        <span class="five">8</span>
-                        <span class="six">9</span>
-                        <span class="seven">10</span>
-                    </div>
-                    <div class="row">
-                        <span class="one">11</span>
-                        <span class="two">12</span>
-                        <span class="three">13</span>
-                        <span class="four">14</span>
-                        <span class="five">15</span>
-                        <span class="six">16</span>
-                        <span class="seven">17</span>
-                    </div>
-                    <div class="row">
-                        <span class="one">18</span>
-                        <span class="two">19</span>
-                        <span class="three">20</span>
-                        <span class="four">21</span>
-                        <span class="five">22</span>
-                        <span class="six">23</span>
-                        <span class="seven">24</span>
-                    </div>
-                    <div class="row">
-                        <span class="one">25</span>
-                        <span class="two">26</span>
-                        <span class="three">27</span>
-                        <span class="four">28</span>
-                        <span class="five">29</span>
-                        <span class="six">30</span>
-                        <span class="seven">31</span>
-                    </div>
+
+                </div>
+                <div class="body">
+                    <table>
+                        <thead>
+                            <th>S</th>
+                            <th>M</th>
+                            <th>T</th>
+                            <th>W</th>
+                            <th>T</th>
+                            <th>F</th>
+                            <th>S</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
-        </div>
+
+            <div id="legend">
+                <div>Legend:</div>
+                <span class="today">Today</span>
+            </div>
+        </main>
     </body>
+
 </html>
