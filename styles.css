@@ -3,12 +3,12 @@ main {
     font-weight: 400;
     font-style: normal;
     width: 100%;
+    padding: 0 1em;
 }
 
 #input-wrapper {
     margin: .25em 1em;
     padding: .5em .75em;
-    /* width: 200px; */
     border: 1px solid black;
 }
 
@@ -24,14 +24,13 @@ main {
     margin: 0 1em;
     padding: .5em .75em;
     position: relative;
-    /* width: 200px; */
     border: 1px solid black;
 }
 
 #calendar-wrapper .header {
     margin-bottom: .5em;
     display: flex;
-    height: 10vw;
+    height: 5vw;
     font-size: 3vw;
 }
 
@@ -58,7 +57,7 @@ main {
 }
 
 #calendar-wrapper .body table td {
-    height: 10vw;
+    height: 5vw;
 }
 
 .today {
